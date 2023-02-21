@@ -1,0 +1,2 @@
+ALTER TABLE actor
+ADD COLUMN age int DEFAULT 0;
