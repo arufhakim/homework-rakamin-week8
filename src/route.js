@@ -42,7 +42,7 @@ router.get('/category', (req, res) => {
 
 // Get film by category
 router.get('/category/:id/film', (req, res) => {
-    const getFilmByCategory = `SELECT * FROM film f LEFT JOIN film_category fc ON f.film_id = fc.film_id RIGHT JOIN category c ON fc.category_id = c.category_id WHERE fc.category_id = ${req.params.id}`;
+    const getFilmByCategory = `SELECT * FROM film f INNER JOIN film_category fc ON f.film_id = fc.film_id INNER JOIN category c ON fc.category_id = c.category_id WHERE fc.category_id = ${req.params.id}`;
     pool.query(getFilmByCategory, (err, result) => {
         if (err) throw new Error(err.message);
         console.log(`Banyak Film pada Category ${req.params.id} adalah ${result.rows.length}`);
